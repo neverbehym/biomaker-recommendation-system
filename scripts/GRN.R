@@ -105,5 +105,5 @@ for (i in 1:length(panel_list)){
 
 avg_dts[is.na(avg_dts)] = max(avg_dts,na.rm = TRUE)+1
 
-df_metrics_GRN <- data.frame(n_BiomarkerIncluded_GRN=num_biomarkersGRNIncluded,n_regulators_GRN=num_regulators,n_components_GRN=num_components,Degree_GRN=avg_dgs,pairwise_distance_GRN=avg_dts,betweenness_centrality_GRN=avg_betcloseness_centrality_GRN=,avg_clo)
+df_metrics_GRN <- data.frame(GRN_n_BiomarkerIncluded=num_biomarkersGRNIncluded,GRN_n_regulators=num_regulators,GRN_n_components=num_components,GRN_Degree=avg_dgs,GRN_pairwise_distance=avg_dts,GRN_betweenness_centrality=avg_bet,closeness_centrality=avg_clo)
 write.table(df_metrics_GRN,file='../results/GRN_metrics.csv', sep=',',row.names=TRUE, col.names=TRUE,quote=FALSE)
