@@ -4,7 +4,6 @@ library(viridis)
 library(centiserve)
 library(expm)
 
-setwd('/Users/huangyiming/ProjectWorkspace/biomaker-recommendation-system/scripts')
 ############# read a pool of candidate biomarker panels #############
 
 panel_log <- read.table('../results/CandidateBiomarkerList.csv', sep=",", header = TRUE,stringsAsFactors = FALSE)
@@ -28,13 +27,16 @@ for (regulator in unique(regnet_regulator$source))
 lengths(regulon_lists)
 
 
-############# create the graph of regulatory network#############
+############# create the graph of regulatory network #############
+
 edge_list<-as.vector(t(as.matrix(regnet_regulator[,1:2])))
 length(edge_list)
 g_regnet <- make_graph(edge_list,directed = FALSE)
 vertex_list<-V(g_regnet)$name
 length(vertex_list)
 set_edge_attr(g_regnet,name='sign',index=E(g_regnet),value=regnet_regulator[,3])
+
+############# obtain the network metrics #############
 
 ### degree
 dg<-degree(g_regnet)
@@ -64,6 +66,7 @@ df_vp_GRN<-data.frame(component_id=as.character(comps$membership),component_type
                             betweenness=betweenness_cent,closeness=latoraclose_cent,eigenvector=eigen_cent,topological=topocoe_cent,degree=dg)
 
 
+############# compute the evaluation metrics for biomarker panels #############
 
 num_biomarkers <- lengths(panel_list)
 
