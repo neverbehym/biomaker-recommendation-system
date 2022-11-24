@@ -13,7 +13,7 @@ m_express <- as.matrix(read.table("../data/NicolasGeneExpression_processed.csv",
 multiclass_labels <- read.table('../data/MultiClassLabel.csv',sep=',',stringsAsFactors = FALSE,row.names = 1)
 num_classes <- length(unique(multiclass_labels$classID))
 
-############# compute the evaluation metrics #############
+############# compute the evaluation metrics for biomarker panels #############
 
 ### performance score
 panel_log$performance
