@@ -7,9 +7,13 @@ library(viridis)
 library(centiserve)
 library(expm)
 
+args = commandArgs(trailingOnly=TRUE)
+Panellog_FILE<-args[1]
+data_FILE<-args[2]
+
 ############# read a pool of candidate biomarker panels #############
 
-panel_log <- read.table('../results/CandidateBiomarkerList.csv', sep=",", header = TRUE,stringsAsFactors = FALSE)
+panel_log <- read.table(Panellog_FILE sep=",", header = TRUE,stringsAsFactors = FALSE)
 
 panel_list <- strsplit(panel_log$genes,';')
 
@@ -17,7 +21,7 @@ biomarker_union<-unique(unlist(panel_list))
 length(biomarker_union)
 
 ############# read gene expression data  #############
-m_express <- as.matrix(read.table("../data/NicolasGeneExpression_processed.csv", sep=",", header = TRUE, stringsAsFactors = FALSE,row.names = 1))
+m_express <- as.matrix(read.table(data_FILE, sep=",", header = TRUE, stringsAsFactors = FALSE,row.names = 1))
 
 ############# Construct of Co-Expression Network #############
 
