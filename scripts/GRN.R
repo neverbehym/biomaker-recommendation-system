@@ -4,6 +4,10 @@ library(viridis)
 library(centiserve)
 library(expm)
 
+args = commandArgs(trailingOnly=TRUE)
+Panellog_FILE<-args[1]
+GeneRegulatoryNetwork_FILE<-args[2]
+
 ############# read a pool of candidate biomarker panels #############
 
 panel_log <- read.table('../results/CandidateBiomarkerList.csv', sep=",", header = TRUE,stringsAsFactors = FALSE)
