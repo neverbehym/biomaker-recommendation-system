@@ -1,7 +1,11 @@
+args = commandArgs(trailingOnly=TRUE)
+Panellog_FILE<-args[1]
+data_FILE<-args[2]
+multiclass_FILE<-args[3]
 
 ############# read a pool of candidate biomarker panels #############
 
-panel_log <- read.table('../results/CandidateBiomarkerList.csv', sep=",", header = TRUE,stringsAsFactors = FALSE,row.names=1)
+panel_log <- read.table(Panellog_FILE, sep=",", header = TRUE,stringsAsFactors = FALSE,row.names=1)
 
 panel_list <- strsplit(panel_log$genes,';')
 
@@ -9,8 +13,8 @@ biomarker_union<-unique(unlist(panel_list))
 length(biomarker_union)
 
 ############# read gene expression data and multi-class (cellular states) labels #############
-m_express <- as.matrix(read.table("../data/NicolasGeneExpression_processed.csv", sep=",", header = TRUE, stringsAsFactors = FALSE,row.names = 1))
-multiclass_labels <- read.table('../data/MultiClassLabel.csv',sep=',',stringsAsFactors = FALSE,row.names = 1)
+m_express <- as.matrix(read.table(data_FILE, sep=",", header = TRUE, stringsAsFactors = FALSE,row.names = 1))
+multiclass_labels <- read.table(multiclass_FILE,sep=',',stringsAsFactors = FALSE,row.names = 1)
 num_classes <- length(unique(multiclass_labels$classID))
 
 ############# compute the evaluation metrics for biomarker panels #############
