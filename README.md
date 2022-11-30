@@ -13,7 +13,7 @@ Rscript GRN.R [Panellog_FILE] [GeneRegulatoryNetwork_FILE]
 Rscript CEN.R [Panellog_FILE] [data_FILE] 
 ```
 We have provided the example files, for example:
-``
+```
 Rscript BIM.R ../results/CandidateBiomarkerList.csv ../data/NicolasGeneExpression_processed.csv ../data/MultiClassLabel.csv
 ```
 The Stress Sensing Model (SSM) that tests the predictive power of a given biomarker panel to sense different stress conditions is implemented in Python 3.7. The outputs can be found in */results*. Please run:
