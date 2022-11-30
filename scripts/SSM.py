@@ -37,7 +37,7 @@ else:
     result_DIR = '../results/SSM/BiomarkerPanels/panel'+str(Panel_ID)
 
 if(os.path.isdir(result_DIR)==False):
-    os.mkdir(result_DIR)
+    os.mkdir(makedirs)
 
 for filename in filenames:
 
