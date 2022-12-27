@@ -17,13 +17,14 @@ Panellog_FILE = str(sys.argv[1])
 Panel_ID= int(sys.argv[2])
 ### read the dataframe of panel log with the index being panel_ID and column 'genes' being biomarker gene names seperated with ";"
 df_panels = pd.read_csv(Panellog_FILE,index_col=0)
-panel_size = df_panels.loc[Panel_ID,'size']
-panel_genes = df_panels.loc[Panel_ID,'genes'].split(sep=';')
-panel_locus = df_genes.loc[[x in panel_genes for x in df_genes['name']]].index.to_numpy()
 
 Genelist_FILE = str(sys.argv[3])
 ### read the dataframe of gene list with the index being locus_tag and column 'name' being gene names
 df_genes = pd.read_csv(Genelist_FILE,index_col=0)
+
+panel_size = df_panels.loc[Panel_ID,'size']
+panel_genes = df_panels.loc[Panel_ID,'genes'].split(sep=';')
+panel_locus = df_genes.loc[[x in panel_genes for x in df_genes['name']]].index.to_numpy()
 
 data_DIR = str(sys.argv[4])
 filenames = os.listdir(data_DIR)
